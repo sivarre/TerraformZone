@@ -1,21 +1,18 @@
+#----- storage/main.tf
+
+
+#To Generate Random ID
 resource "random_id" "tf_bucket_id" {
      byte_length = 1
 }
 
+
+# To create a s3 bucket
 resource "aws_s3_bucket" "tf_s3_bucket"{
-  bucket = "${"testproject"}-${random_id.tf_bucket_id.dec}"
+  bucket = "${var.project_name}-${random_id.tf_bucket_id.dec}"
   force_destroy = true
 
   tags = {
     Name = "tf_bucket"
   }
-}
-
-
-output "out_randome_id"{
-  value = "${random_id.tf_bucket_id.dec}"
-}
-
-output "out_bucket_name"{
-  value = "${aws_s3_bucket.tf_s3_bucket.id}"
 }
