@@ -46,7 +46,8 @@ resource "aws_subnet" "tf_public_subnet" {
     count = 2
     vpc_id = "${aws_vpc.tf_vpc.id}"
     cidr_block = "${var.public_cidrs[count.index]}"
+    availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
     tags = {
-      Name = "Public_Subnet_${count.index}"
+      Name = "Public_Subnet_${count.index + 1}"
     }
 }
