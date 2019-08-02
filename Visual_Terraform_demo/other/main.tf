@@ -62,17 +62,6 @@ resource "aws_network_interface" "test" {
   #security_groups = ["${aws_security_group.tf_sg_allow_all.id}" , tolist("${data.aws_security_groups.dt_sg_groups.ids}")]
 }
 
-/*
-resource "aws_network_interface_sg_attachment" "mysgattachment" {
-    #count = "${var.count_def}"
-    #count = 1
-    security_group_id = "${aws_security_group.tf_sg_allow_all.id}"
-    network_interface_id = "${aws_network_interface.test.id}"
-}
-
--------stop
-*/
-
 resource "aws_security_group" "tf_sg_allow_all" {
     name = "My_Terraform_Sg"
     description = "Demo Security group created by Terraform Script"
@@ -93,6 +82,21 @@ resource "aws_security_group" "tf_sg_allow_all" {
       Name = "My_Terraform_Sg"
     }
 }
+
+
+/*
+resource "aws_network_interface_sg_attachment" "mysgattachment" {
+    #count = "${var.count_def}"
+    #count = 1
+    security_group_id = "${aws_security_group.tf_sg_allow_all.id}"
+    network_interface_id = "${aws_network_interface.test.id}"
+}
+
+-------stop
+*/
+
+
+
 
 # -----------------------------------outputs
 

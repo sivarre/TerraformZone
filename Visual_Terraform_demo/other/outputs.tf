@@ -24,8 +24,13 @@ output "subnet-count-2" {
   value = "${tolist(data.aws_subnet_ids.subnet.ids)[1]}"
 }
 
-output "network_interfaces"{
+output "network_interface_id"{
   value = "${aws_network_interface.test.id}"
+}
+
+
+output "network_interface_private_ips"{
+  value = "${aws_network_interface.test.private_ips}"
 }
 
 output "security_groups_forNetworkInterfaceCard"{

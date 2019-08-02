@@ -1,3 +1,8 @@
+provider "aws" {
+  
+}
+
+
 resource "aws_instance" "tf_ec2ubuntu"{
     ami = "ami-024a64a6685d05041"
     instance_type = "t2.micro"

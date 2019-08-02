@@ -30,8 +30,16 @@ data "aws_ami" "ami" {
   owners = ["amazon"]
 }
 
+data "aws_caller_identity" "current" {}
+
+
+output "account_id" {
+  value = "${data.aws_caller_identity.current.account_id}"
+}
+
+
 output "ami_options"{
-  value = "data.aws_ami.ami.image_id"
+  value = "${data.aws_ami.ami.image_id}"
 }
 
 
